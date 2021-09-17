@@ -7,13 +7,14 @@ import webbrowser
 def main():
     all_files = []
     websites_list = []
-    value = arguments.func()  # args.add_env, args.display_all_envs, args.run_existing, args.add_env_with_web
-    if value[2] is not None:
+    value = arguments.arguments()  # args.add_env, args.display_all_envs, args.run_existing,
+    if value[2] is not None:       # args.add_env_with_web, args.del_all_envs, args.delete_env
         with open('env.txt', 'r', encoding='utf-8') as file:
             lines = file.readlines()
             for element in lines:
                 if element.strip('\n') == value[2]:
                     required_element = lines.index(element)
+        file.close()
         cont = False
         link_cont = False
         for i in range(len(lines)):
@@ -44,6 +45,26 @@ def main():
     if value[0] is True or value[3] is not None:
         dialog_box.main()
 
+    if value[4]: # del_all_envs
+        os.remove('env.txt')
+
+    if value[5] is not None:  # del_env
+        cont = False
+        to_remove = []
+        with open('env.txt', 'r', encoding='utf-8') as f:
+            path = f.readlines()
+        for i in range(len(path)):
+            if path[i].strip('\n') == value[5] or cont:
+                cont = True
+                to_remove.append(path[i])
+            elif path[i] == '\n':
+                cont = False
+                break
+        final = [x for x in path if x not in to_remove]
+        f.close()
+        with open('env.txt', 'w', encoding='utf-8') as file_write:
+            file_write.writelines(final)
+
     if value[1] is True:
         counter = 0
         if os.path.isfile('env.txt'):
@@ -58,6 +79,7 @@ def main():
                     if counter == 1:
                         print(lines[i].strip('\n'))
                         counter = 0
+            file.close()
 
 
 if __name__ == '__main__':
