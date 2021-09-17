@@ -19,24 +19,25 @@ def create_env():
 
 
 def write_env_to_file(name, path_list):
-    values = arguments.func()
+    values = arguments.arguments()
     if os.path.isfile('env.txt'):
         with open('env.txt', 'a', encoding='utf-8') as file:
-            file.write('\n')
             file.writelines(name)
             file.write('\n')
             file.writelines('\n'.join([path for path in path_list]))
-            file.writelines('Websites')
-            file.write('\n')
-            file.writelines('\n'.join([links for links in values[3]]))
+            if values[3]:
+                file.writelines('Websites')
+                file.write('\n')
+                file.writelines('\n'.join([links for links in values[3]]))
     else:
         with open('env.txt', 'w', encoding='utf-8') as file:
             file.writelines(name)
             file.write('\n')
             file.writelines('\n'.join([path for path in path_list]))
-            file.writelines('Websites')
-            file.write('\n')
-            file.writelines('\n'.join([links for links in values[3]]))
+            if values[3]:
+                file.writelines('Websites')
+                file.write('\n')
+                file.writelines('\n'.join([links for links in values[3]]))
 
 
 def main():
