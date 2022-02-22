@@ -6,6 +6,7 @@ import arguments
 
 def create_env():
     name = input("Enter the name of this env: ")
+    print("Select all the exes which you want to add to this env. Press cancel after all the desired exes have been added")
     done = False
     path_list = []
     while not done:

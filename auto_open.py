@@ -67,19 +67,12 @@ def main():
             file_write.writelines(final)
 
     if value[1] is True:
-        counter = 0
         if os.path.isfile('env.txt'):
             with open('env.txt', 'r', encoding='utf-8') as file:
                 lines = file.readlines()
-                for i in range(len(lines)):
-                    if i == 0:
-                        print(lines[i].strip('\n'))
-                    if lines[i] == '\n':
-                        counter += 1
-                        continue
-                    if counter == 1:
-                        print(lines[i].strip('\n'))
-                        counter = 0
+                for i in lines:
+                    if '/' not in i:
+                        print(i.strip('\n'))
             file.close()
 
 
