@@ -8,8 +8,8 @@ Then you can run that env using a single command, which in turn will execute all
 1. [Download and install Python](https://www.python.org/downloads/).
 1. Make sure to tick the ADD TO PATH option when prompted by the installer.
 1. Open Command Prompt and install argparse by typing *pip install argparse*.
-1. To use the program from any directory add the folder containing all the scripts to the path variable. [Tutorial on how to add a directory to path](https://correlated.kayako.com/article/40-running-python-scripts-from-anywhere-under-windows) 
-1. To run the program open windows powershell and type auto_open.py -h to receive all the available commands
+1. Then navigate to the directory where the script is downloaded using *cd* command
+1. Once in the directory type python auto_open.py -h to receive all the commands.
 
 
 # Commands
